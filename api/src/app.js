@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-const videogames = require('./routes/videogames.js');
+//const videogames = require('./routes/videogames.js');
 
 require('./db.js');
 
@@ -24,7 +24,7 @@ server.use((req, res, next) => {
 });
 
 server.use('/', routes);
-server.use('/', videogames);
+//server.use('/', videogames);
 
 
 // Error catching endware.

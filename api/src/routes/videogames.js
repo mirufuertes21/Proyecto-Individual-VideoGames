@@ -1,11 +1,25 @@
-const { Router } = require('express');
-const router = Router();
-const {  getApiDb  }= require("../controllers/videogames.controller");
+const { Router }  =require('express')
+const getAllGames = require('./Controller/getGames.js')
+const req = require('express/lib/request')
+const getSearch = require('./Controller/search.js')
 
+const routerVideogames = Router()
 
+routerVideogames.get('/videogames',async (req,res) => {
+  const {search} = req.query
+  if(!search){
+  const games = await getAllGames()
+  res.send(games)
+  }
+  else {
+    const games = await getSearch(search) 
+    res.send(games)
+  }
+})
 
-router.get("/videogames", async (req, res)=>{
-    
+module.exports = routerVideogames
+module.exports = routerVideogames
+
     //res.send(apiDbAll);
     //try{
       //  const apiDbAll= await getApiDb();
@@ -13,10 +27,10 @@ router.get("/videogames", async (req, res)=>{
    // }catch(error){
      //   res.status(400).json({error}) //que numero de error pongo?
    // }
-})
 
 
 
 
-module.exports = router;
+
+
 

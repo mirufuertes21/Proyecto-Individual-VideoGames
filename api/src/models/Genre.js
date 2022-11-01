@@ -1,15 +1,12 @@
 const { DataTypes } = require('sequelize');
 module.exports = (sequelize) =>{
-    sequelize.define('genre',{
-        id:{
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            allowNull: false,
-            primaryKey: true,
-        },
+    sequelize.define('genres',{
         name: {
             type: DataTypes.STRING,
             allowNull: false,
           },
     });
 };
+
+
+// id          ['todads','genres', aofsdf]
