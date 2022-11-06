@@ -14,7 +14,8 @@ routerCreateGames.post('/videogames',  async (req, res) => {
     platforms &&
     image &&
     released &&
-    genre
+    genre &&
+    createInDb
   ) {
     const game  = await Videogame.create({
       name,
@@ -32,11 +33,7 @@ routerCreateGames.post('/videogames',  async (req, res) => {
     });
    
     await game.addGenres(genres);
-   res.send(game);
-    
-    
-    
-    
+   res.send(game); 
 }})
 
 

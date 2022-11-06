@@ -13,12 +13,12 @@ routerVideogames.get('/videogames',async (req,res) => {
   }
   else {
     const games = await getSearch(search) 
-    res.send(games)
+    res.status(200).send(games)
   }
 })
 
 module.exports = routerVideogames
-module.exports = routerVideogames
+
 
     //res.send(apiDbAll);
     //try{
