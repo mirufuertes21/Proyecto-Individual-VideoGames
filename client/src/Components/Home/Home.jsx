@@ -2,7 +2,7 @@ import React from "react";
 //import NavBar from "../NavBar/NavBar";
 import { Link } from 'react-router-dom'
 import style from './Home.module.css'
-
+import SearchVideogame  from "../SearchBar/SearchBar";
 //import { useState, useEffect } from 'react';
 //import { useDispatch, useSelector } from 'react-redux';
 //import { getAllGames } from "../../Actions/actions";
@@ -23,15 +23,16 @@ export default function Home () {
 
     return (
       <div className = {style.background}>
-         <nav>
-            <h1>
-                <Link to= {'/create'}>Create Videogame</Link>
-            </h1>
+         
+            <h1><Link to= {'/create'}>Create Videogame</Link></h1>
+
             <button className={style.button}> A - Z </button>
+
             <button className={style.button}> Z - A </button>
-        </nav>
-      
-       
+
+            <SearchVideogame />
+
+
       </div>
     )
 }

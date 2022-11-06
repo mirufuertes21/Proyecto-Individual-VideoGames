@@ -32,7 +32,7 @@ export const getAllGames= () =>{
     };
 };
 
-export const getGamesByName= (search) => {
+export const getVideogamesByName= (search) => {
     return async function (dispatch){
         try{
             let response= await axios.get(`http://localhost:3001/videogames?name=${search}`);
