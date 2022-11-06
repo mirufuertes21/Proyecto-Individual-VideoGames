@@ -1,32 +1,40 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 //import { Link } from 'react-router-dom'
 import style from './SearchBar.module.css'
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getVideogamesByName } from "../../Actions/actions";
 
-function SearchVideogame () {
-   const dispatch= useDispatch();
-   const [input, setInput]= useState('')
-   
-  const handlerInput=(e)=>{
-   setInput(e.target.value)
-  }
+function SearchVideogame() {
+   const dispatch = useDispatch();
+   const [searchGameInput, searchGameInputSetter] = useState('');
 
-  const handlerSubmit=(e)=>{
-     e.preventDeFault()
-     //if(input)
-     //dispatch(getVideogamesByName(input))
-     setInput('')
+   const handlerInput = (e) => {
+      searchGameInputSetter(e.target.value);
    }
-   return(
-      <div className={style.SearchBar}>
-         <input
-            value= {input}
-            onChange={(e) => handlerInput(e)}
-            placeholder= "Search a game..."
-            type= "text"
-         />
-         <button onClick={(e)=>handlerSubmit(e)} type='submit' className={style.button}> SEARCH </button>
+
+   const handlerSearchGame = (e) => {
+      getVideogamesByName(dispatch,searchGameInput);
+      searchGameInputSetter('')
+   }
+
+   return (
+      <div >
+         <button>Crear juego</button>
+         <input type="text" onChange={(e)=>handlerInput(e)} placeholder="Buscar juego"  value={searchGameInput}/>
+         <button onClick={(e)=>{handlerSearchGame(e)}}>BUSCAR JUEGO</button>
+         <label >Orden</label>
+         <select name="order" id="">
+            <option value="">A - Z</option>
+            <option value="">Z - A</option>
+         </select>
+         <label >Genero</label>
+         <select name="order" id="">
+            
+         </select>
+         <label >Plataforma</label>
+         <select name="order" id="">
+      
+         </select>
       </div>
    )
 }
@@ -39,4 +47,4 @@ export default SearchVideogame;
        //    </form>
        // </div>
     //)
-   
+

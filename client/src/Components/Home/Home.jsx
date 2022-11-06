@@ -2,37 +2,49 @@ import React from "react";
 //import NavBar from "../NavBar/NavBar";
 import { Link } from 'react-router-dom'
 import style from './Home.module.css'
-import SearchVideogame  from "../SearchBar/SearchBar";
+import SearchVideogame from "../SearchBar/SearchBar";
 //import { useState, useEffect } from 'react';
 //import { useDispatch, useSelector } from 'react-redux';
 //import { getAllGames } from "../../Actions/actions";
 //import NavBar from "./NavBar/NavBar.module.css";
-export default function Home () {
-    //const dispatch = useDispatch()
-    //const AllGames= useSelector((state) => state.games)
 
-    //useEffect(()=>{
-      //  dispatch(getAllGames())
-    //},[])
 
-    //return {
-     //  <div>
-     //  <Link to= '/game' </Link>
-       // </div>
-    //}
+import { useEffect } from 'react';
+import { useDispatch , useSelector } from 'react-redux';
+import { getAllGames } from "../../Actions/actions";
 
-    return (
-      <div className = {style.background}>
-         
-            <h1><Link to= {'/create'}>Create Videogame</Link></h1>
+export default function Home() {
 
-            <button className={style.button}> A - Z </button>
+  const dispatch = useDispatch()
+  const allGames = useSelector(state => state.allGames);
+  useEffect(() => {
+    getAllGames(dispatch)
+    console.log("Todos los juegos son: ",allGames);
+  }, [])
 
-            <button className={style.button}> Z - A </button>
+  return (
+    <div className={style.background}>
 
-            <SearchVideogame />
+      <div className="home-container">
+        <div className="nav-bar">
+          <SearchVideogame />
+        </div>
+
+        <div className="games-card-container">
+
+          {allGames.map(game => <p className={style.p}>{game.name}</p>)}
+
+        </div>
 
 
       </div>
-    )
+
+
+
+
+
+
+
+    </div>
+  )
 }

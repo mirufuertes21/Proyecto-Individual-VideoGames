@@ -6,26 +6,15 @@ import { GET_ALL_GAMES,
    FILTER_GENRE,
    FILTER_PLATFORMS,
    ORDER_BY_ALFABETIC,
-   ORDER_BY_RATING } from '..Actions/action';
+   ORDER_BY_RATING } from '../Actions/actions';
 
 const initialState= {
    games:[],
    allGames: [],
-   gameDetail:{},
+   videogameDetails:{},
    genres:[],
    platforms: [],
    };
-
-// function rootReducer(state= initialState, action){
-//    switch(action.type){
-//       case GET_ALL_GAMES:
-//          return{
-//             ...state,
-//                games: action.payload,
-//                allGames: action.payload,
-//             };
-//       case 
-//    }
 
 const rootReducer=(state = initialState, action) => {
     switch (action.type){
@@ -39,7 +28,7 @@ const rootReducer=(state = initialState, action) => {
         case GET_VIDEOGAMES_BY_NAME:
             return{
                 ...state,
-                videogames: action.payload,
+                games: action.payload,
             };
         
         case GET_ALL_GENRES:

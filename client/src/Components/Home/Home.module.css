@@ -1,9 +1,13 @@
-.background{
+.background {
     background-image: url('../Images/Home.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
     background-repeat: no-repeat;
     align-items: center;
-    height: 100vh;   
+    height: 100vh;
+}
+
+.p {
+    color: white;
 }

@@ -1,5 +1,5 @@
 const axios= require('axios');
-const { Genre, VideoGame }= require('../db');
+const { Genre, VideoGame }= require('../../db');
 const { API_KEY } = process.env;
 
 //traigo todos los juegos de la api
@@ -22,32 +22,32 @@ const apiInfo = async () => {
     games.push(...intration);
     link = response.data.next;
   }
-  console.log(games.slice(0, 10));
-  console.log(games.length);
+  return games;
+  
 };
-apiInfo();
 
-const getDb= async () => {
-    try{
-        return await VideoGame.findAll({
-        include:{
-            model: Genre,
-            attributes:["name"],
-            through: {
-                attributes:[],
-            },
-        },
-    });
-    }catch (error){
-        console.log("Este error es de la Base de Datos", error);
-    }
-};
+
+// const getDb= async () => {
+//     try{
+//         return await VideoGame.findAll({
+//         include:{
+//             model: Genre,
+//             attributes:["name"],
+//             through: {
+//                 attributes:[],
+//             },
+//         },
+//     });
+//     }catch (error){
+//         console.log("Este error es de la Base de Datos", error);
+//     }
+// };
 
 const getApiDb= async ()=>{
-    const apiData= await getApi();
-    const bdData= await getDb();
-    const hola= apiData.concat(bdData);
-    return hola;
+    const apiData= await apiInfo();
+    // const bdData= await getDb();
+    // const allData = apiData.concat(bdData);
+    return apiData;
 }
 
-module.exports= {getApiDb};
+module.exports= getApiDb;
